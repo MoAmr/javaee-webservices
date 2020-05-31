@@ -13,3 +13,9 @@
 <h5>Implementation class:	com.webservices.soap.MySOAPEndpoint</h5>
 
 --------------------------------------------------------------------------
+
+# How to generate SOAP WSDl files by JAX-WS Maven Plugin in order to consume your SOAP webservice?
+
+<h5>mvn jaxws:wsimport</h5>
+
+--------------------------------------------------------------------------
