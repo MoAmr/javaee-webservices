@@ -14,7 +14,7 @@
 
 --------------------------------------------------------------------------
 
-# How to generate SOAP WSDl files by JAX-WS Maven Plugin in order to consume your SOAP webservice?
+# How to generate SOAP WSDL files by JAX-WS Maven Plugin in order to consume your SOAP webservice?
 
 <h5>mvn jaxws:wsimport</h5>
 
