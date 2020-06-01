@@ -21,6 +21,6 @@ public class SOAPServiceClient {
 
         SalutationResponse response = port.salute(request, "Mohammed");
 
-        Logger.getAnonymousLogger().info("The response is: " + response.getSalutationResponse());
+        //Logger.getAnonymousLogger().info("The response is: " + response.getSalutationResponse());
     }
 }
