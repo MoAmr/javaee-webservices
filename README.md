@@ -22,7 +22,12 @@
 
 # Payara Application Server
 
-<h5>At the time of developing this project, Payara Application Server was not supported by jdk 11
-Note: If your machine is running jdk 8, then it should work fine.</h5>
+<h5>At the time of developing this project, Payara Application Server was not supported by jdk 11</h5>
+
+<h5><b>Note:</b> If your machine is running jdk 8, then it should work fine.</h5>
 
 --------------------------------------------------------------------------
+
+# Jakarta Bean Validation
+
+<h5>https://beanvalidation.org/</h5>

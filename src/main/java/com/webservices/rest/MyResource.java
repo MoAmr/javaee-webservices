@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Singleton;
+import javax.validation.constraints.NotBlank;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
@@ -138,7 +139,7 @@ public class MyResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public Response saluteWithForm(@FormParam("salutation") String salutation, @FormParam("guest") String guest) {
+    public Response saluteWithForm(@NotBlank @FormParam("salutation") String salutation, @FormParam("guest") String guest) {
         SalutationResponse response = new SalutationResponse();
 
         response.setSalutationResponse("Hello, "+salutation+" "+guest);
