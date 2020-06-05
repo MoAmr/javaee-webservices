@@ -107,6 +107,7 @@ public class MyResource {
                 Thread.sleep(8000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+                return Response.serverError().entity("Something wrong happened " + e.getMessage()).build();
             }
         }
         response.setSalutationResponse("Goodbye, "+request.getSalutation()+" "+guest);
