@@ -1,6 +1,7 @@
 package com.webservices.rest.client;
 
 import com.webservices.model.SalutationRequest;
+import org.glassfish.jersey.logging.LoggingFeature;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -11,6 +12,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SyncRESTClient {
@@ -28,23 +30,26 @@ public class SyncRESTClient {
          * retrieve and log the response
          */
 
+        Logger logger = Logger.getLogger("Sync Client");
+
         Client client = ClientBuilder.newClient();
         SalutationRequest request = new SalutationRequest();
         request.setSalutation("His Royal Codeness");
         Entity<SalutationRequest> entity = Entity.entity(request, MediaType.APPLICATION_JSON);
         String targetResource = "http://localhost:8080/java-ee-webservices/webapi/myresource/guest/{guest}/salute";
         Response response = client.target(targetResource)
-                .resolveTemplate("guest", "Tayo")
+                .register(new LoggingFeature(logger, Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 5000))
+                .resolveTemplate("guest", "Mohammed")
                 .request(MediaType.APPLICATION_JSON)
                 //.get();
                 .post(entity);
-        Logger.getAnonymousLogger().info("Response code "+response.getStatus());
-        Logger.getAnonymousLogger().info("Response from the server: "+response.readEntity(String.class));
+        Logger.getAnonymousLogger().info("Response code " + response.getStatus());
+        Logger.getAnonymousLogger().info("Response from the server: " + response.readEntity(String.class));
     }
 
     private static void asyncRESTClient() {
         /**
-         * Call http://localhost:8080/java-ee-webservices/webapi/myresource/guest/Tayo/salute?makeItWait=true
+         * Call http://localhost:8080/java-ee-webservices/webapi/myresource/guest/Mohammed/salute?makeItWait=true
          * with an HTTP POST
          * retrieve and log the response
          */
@@ -55,7 +60,7 @@ public class SyncRESTClient {
         Entity<SalutationRequest> entity = Entity.entity(request, MediaType.APPLICATION_JSON);
         String targetResource = "http://localhost:8080/java-ee-webservices/webapi/myresource/guest/{guest}/salute";
         Future<Response> futureResponse = client.target(targetResource)
-                .resolveTemplate("guest", "Tayo")
+                .resolveTemplate("guest", "Mohammed")
                 .queryParam("makeItWait", true)
                 .request(MediaType.APPLICATION_JSON)
                 .async()
@@ -80,7 +85,7 @@ public class SyncRESTClient {
 
         Response response = null;
         try {
-            response = futureResponse.get(4,TimeUnit.SECONDS);
+            response = futureResponse.get(4, TimeUnit.SECONDS);
             futureResponse.isDone();
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
@@ -93,8 +98,8 @@ public class SyncRESTClient {
             e.printStackTrace();
         }
 
-        Logger.getAnonymousLogger().info("Response code "+response.getStatus());
-        Logger.getAnonymousLogger().info("Response from the server: "+response.readEntity(String.class));
+        Logger.getAnonymousLogger().info("Response code " + response.getStatus());
+        Logger.getAnonymousLogger().info("Response from the server: " + response.readEntity(String.class));
 
     }
 }
