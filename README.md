@@ -19,3 +19,10 @@
 <h5>mvn jaxws:wsimport</h5>
 
 --------------------------------------------------------------------------
+
+# Payara Application Server
+
+<h5>At the time of developing this project, Payara Application Server was not supported by jdk 11
+Note: If your machine is running jdk 8, then it should work fine.</h5>
+
+--------------------------------------------------------------------------
