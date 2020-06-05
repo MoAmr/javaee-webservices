@@ -17,5 +17,7 @@ public class ApplicationConfig extends ResourceConfig {
         packages("com.webservices.rest");
         property(ServerProperties.BV_SEND_ERROR_IN_RESPONSE, true);
         register(new LoggingFeature(LOGGER, Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 5000));
+        property(ServerProperties.MONITORING_ENABLED, true);
+        property(ServerProperties.TRACING, "ALL");
     }
 }
