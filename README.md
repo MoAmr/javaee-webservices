@@ -33,3 +33,15 @@
 <h5>https://beanvalidation.org/</h5>
 
 --------------------------------------------------------------------------
+
+# Swagger API Documentation
+
+The Swagger documentation will be available at:
+
+<h5>http://localhost:8080/java-ee-webservices/webapi/openapi.json   endpoint</h5>
+<h5>http://localhost:8080/java-ee-webservices/webapi/openapi.yaml   endpoint</h5>
+
+More info about Swagger API Documentation:
+<h5>https://swagger.io/</h5>
+
+--------------------------------------------------------------------------

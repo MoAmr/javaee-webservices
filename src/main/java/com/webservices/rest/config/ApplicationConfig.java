@@ -14,7 +14,7 @@ public class ApplicationConfig extends ResourceConfig {
     private final Logger LOGGER = Logger.getLogger("MyResource");
 
     public ApplicationConfig() {
-        packages("com.webservices.rest");
+        packages("com.webservices.rest", "io.swagger.v3.jaxrs2.integration.resources");
         property(ServerProperties.BV_SEND_ERROR_IN_RESPONSE, true);
         register(new LoggingFeature(LOGGER, Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 5000));
         property(ServerProperties.MONITORING_ENABLED, true);
