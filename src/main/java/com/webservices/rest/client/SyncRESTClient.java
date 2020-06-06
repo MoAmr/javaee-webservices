@@ -1,6 +1,7 @@
 package com.webservices.rest.client;
 
 import com.webservices.model.SalutationRequest;
+import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.glassfish.jersey.logging.LoggingFeature;
 
 import javax.ws.rs.client.Client;
@@ -32,7 +33,9 @@ public class SyncRESTClient {
 
         Logger logger = Logger.getLogger("Sync Client");
 
-        Client client = ClientBuilder.newClient();
+        HttpAuthenticationFeature authFeature = HttpAuthenticationFeature.basic("admin", "password");
+
+        Client client = ClientBuilder.newClient().register(authFeature);
         SalutationRequest request = new SalutationRequest();
         request.setSalutation("His Royal Codeness");
         Entity<SalutationRequest> entity = Entity.entity(request, MediaType.APPLICATION_JSON);

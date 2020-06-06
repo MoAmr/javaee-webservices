@@ -35,4 +35,22 @@
         <url-pattern>/webapi/*</url-pattern>
     </servlet-mapping>
     -->
+    <!-- Security Configuration -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Super Protected Zone</web-resource-name>
+            <url-pattern>/webapi/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>authorized-users</realm-name>
+    </login-config>
+    <security-role>
+        <description>The role required to access this service</description>
+        <role-name>admin</role-name>
+    </security-role>
 </web-app>
